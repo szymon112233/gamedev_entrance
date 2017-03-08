@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(200,200), "Hello windows");
+	sf::RenderWindow window(sf::VideoMode(200,200), "Hello windows!");
 	bool exit = false;
 	while (!exit)
 	{
