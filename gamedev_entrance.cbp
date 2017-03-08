@@ -54,6 +54,10 @@
 			<Add library="winmm" />
 			<Add directory="D:/Projekty/SFML-2.4.2/lib" />
 		</Linker>
+		<Unit filename="Engine.cpp" />
+		<Unit filename="Engine.hpp" />
+		<Unit filename="Settings.cpp" />
+		<Unit filename="Settings.hpp" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

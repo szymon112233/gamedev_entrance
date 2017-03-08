@@ -1,16 +1,18 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "Engine.hpp"
 
-using namespace std;
 
 int main()
 {
+	Engine engine;
 	sf::RenderWindow window(sf::VideoMode(200,200), "Hello windows!");
 	bool exit = false;
 	while (!exit)
 	{
 		if (window.isOpen())
 		{
+			engine.Update();
 			sf::Event event;
 			while (window.pollEvent(event))
 			{
