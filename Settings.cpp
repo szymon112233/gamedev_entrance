@@ -1,18 +1,18 @@
 #include "Settings.hpp"
-#ifndef SETTINGS_HPP_INCLUDED
 
 Settings::Settings()
 {
-	window_width = 500;
-	window_width = 500;
+	window_size = sf::Vector2i(500, 500);
 }
 
-Settings::Settings(int x, int y)
+Settings::Settings(unsigned int x,unsigned int y)
 {
-	window_width = x;
-	window_width = y;
+	window_size = sf::Vector2i(x, y);
 }
 
-#endif // SETTINGS_HPP_INCLUDED
+sf::Vector2i Settings::GetWindowSize() const
+{
+	return window_size;
+}
 
 

@@ -1,9 +1,17 @@
+#ifndef SETTINGS_HPP_INCLUDED
+#define SETTINGS_HPP_INCLUDED
+
+#include "SFML/System.hpp"
+
 class Settings
 {
 public:
 	Settings();
-	Settings(int x, int y);
+	Settings(unsigned int x,unsigned int y);
+	sf::Vector2i GetWindowSize() const;
 
 private:
-	int window_width, window_height;
+	sf::Vector2i window_size;
 };
+
+#endif // SETTINGS_HPP_INCLUDED
