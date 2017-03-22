@@ -8,7 +8,7 @@ int main()
 	bool exit = false;
 	while (!exit)
 	{
-		engine.Update();
+		engine.Loop();
 		exit = engine.to_exit;
 	}
     return 0;
