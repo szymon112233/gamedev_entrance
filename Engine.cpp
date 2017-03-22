@@ -6,7 +6,9 @@ Engine::Engine()
 	window.create(sf::VideoMode(500, 500), "Sth went terribly wrong here");
 	previous = game_time.getElapsedTime();
 
-	Sprite test;
+	main_control = PlayerController(sf::Keyboard::A, sf::Keyboard::D, sf::Keyboard::W, sf::Keyboard::S);
+
+	Sprite test(main_control);
 	test.SetSprite("sprites/stanie.png");
 	objects.push_back(test);
 }
@@ -20,7 +22,7 @@ void Engine::Loop()
 	lag += elapsed;
 	fps_counter += elapsed;
 
-	HandleEvent();
+	HandleEvents();
 
     while(lag.asMilliseconds() >= MS_PER_UPDATE)
     {
@@ -64,7 +66,7 @@ void Engine::Render()
 	}
 }
 
-void Engine::HandleEvent()
+void Engine::HandleEvents()
 {
 	sf::Event event;
 	while (window.pollEvent(event))
@@ -74,6 +76,7 @@ void Engine::HandleEvent()
 			window.close();
 			to_exit = true;
 		}
+        main_control.HandleEvent(event);
 	}
 }
 

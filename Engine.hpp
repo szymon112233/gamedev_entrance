@@ -7,6 +7,7 @@
 #include "Settings.hpp"
 #include "GameObject.hpp"
 #include "Sprite.hpp"
+#include "PlayerController.hpp"
 
 class Engine
 {
@@ -15,7 +16,7 @@ public:
 	void Update();
 	void Loop();
 	void Render();
-	void HandleEvent();
+	void HandleEvents();
 
 	Settings settings;
 	int frames = 0;
@@ -24,6 +25,7 @@ public:
 	sf::Clock game_time;
 	bool to_exit = false;
 	std::vector<Sprite> objects;
+	PlayerController main_control;
 
 private:
 	sf::Time previous;
