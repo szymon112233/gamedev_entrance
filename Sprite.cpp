@@ -1,21 +1,28 @@
 #include "Sprite.hpp"
 
-Sprite::Sprite(PlayerController& ext_controller) :
+Sprite::Sprite(PlayerController* ext_controller) :
     controller(ext_controller)
+{
+    speed = 5;
+}
+Sprite::Sprite()
 {
     speed = 5;
 }
 
 void Sprite::Update()
 {
-    if (controller.left_pressed)
-        Move(-speed,0);
-    if (controller.right_pressed)
-        Move(speed,0);
-    if (controller.up_pressed)
-        Move(0,-speed);
-    if (controller.down_pressed)
-        Move(0,speed);
+    if(controller != nullptr)
+    {
+        if (controller->left_pressed)
+            Move(-speed,0);
+        if (controller->right_pressed)
+            Move(speed,0);
+        if (controller->up_pressed)
+            Move(0,-speed);
+        if (controller->down_pressed)
+            Move(0,speed);
+    }
 }
 
 void Sprite::Render(sf::RenderWindow& window)

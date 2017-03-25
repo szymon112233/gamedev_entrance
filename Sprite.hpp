@@ -8,14 +8,15 @@
 class Sprite : public GameObject
 {
 public:
-    Sprite(PlayerController& ext_controller);
+    Sprite();
+    Sprite(PlayerController* ext_controller);
     void Update();
     void Render(sf::RenderWindow& window);
     void SetSprite(const sf::Sprite& new_sprite);
     void SetSprite(std::string filename);
     void Move(int x, int y);
     void Move(sf::Vector2i move_vector);
-    PlayerController& controller;
+    PlayerController* controller;
 
 private:
     sf::Sprite sprite;

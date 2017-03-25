@@ -3,14 +3,14 @@
 
 Engine::Engine()
 {
-	window.create(sf::VideoMode(500, 500), "Sth went terribly wrong here");
+	InitWindow();
 	previous = game_time.getElapsedTime();
 
 	main_control = PlayerController(sf::Keyboard::A, sf::Keyboard::D, sf::Keyboard::W, sf::Keyboard::S);
 
-	Sprite test(main_control);
+	test = Sprite(&main_control);
 	test.SetSprite("sprites/stanie.png");
-	objects.push_back(test);
+	objects.push_back(&test);
 }
 
 void Engine::Loop()
@@ -47,9 +47,9 @@ void Engine::Loop()
 void Engine::Update()
 {
     updates++;
-    for (GameObject& it : objects)
+    for (GameObject* it : objects)
     {
-        it.Update();
+        it->Update();
     }
 }
 
@@ -58,9 +58,9 @@ void Engine::Render()
 	if (window.isOpen())
 	{
 		window.clear();
-		for (GameObject& it : objects)
+		for (GameObject* it : objects)
         {
-            it.Render(window);
+            it->Render(window);
         }
         window.display();
 	}
@@ -77,6 +77,13 @@ void Engine::HandleEvents()
 			to_exit = true;
 		}
         main_control.HandleEvent(event);
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+            to_exit = true;
 	}
 }
 
+void Engine::InitWindow()
+{
+    window.create(sf::VideoMode(settings.GetWindowSize().x, settings.GetWindowSize().y), "Sth went terribly wrong here");
+}

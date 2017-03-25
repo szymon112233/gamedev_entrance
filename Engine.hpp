@@ -24,14 +24,17 @@ public:
 	sf::RenderWindow window;
 	sf::Clock game_time;
 	bool to_exit = false;
-	std::vector<Sprite> objects;
+	std::vector<GameObject*> objects;
 	PlayerController main_control;
 
 private:
+    void InitWindow();
+
 	sf::Time previous;
 	sf::Time lag;
 	sf::Time fps_counter;
 	const int MS_PER_UPDATE = 16;
+	Sprite test;
 };
 
 
