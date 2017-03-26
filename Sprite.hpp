@@ -19,6 +19,7 @@ public:
     PlayerController* controller;
 
 private:
+    sf::Texture texture;
     sf::Sprite sprite;
     int speed;
 

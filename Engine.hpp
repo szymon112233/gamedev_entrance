@@ -8,6 +8,7 @@
 #include "GameObject.hpp"
 #include "Sprite.hpp"
 #include "PlayerController.hpp"
+#include "Map.hpp"
 
 class Engine
 {
@@ -29,12 +30,14 @@ public:
 
 private:
     void InitWindow();
+    void InitMap();
 
 	sf::Time previous;
 	sf::Time lag;
 	sf::Time fps_counter;
 	const int MS_PER_UPDATE = 16;
 	Sprite test;
+	Map test_map;
 };
 
 

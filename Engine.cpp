@@ -4,6 +4,7 @@
 Engine::Engine()
 {
 	InitWindow();
+	InitMap();
 	previous = game_time.getElapsedTime();
 
 	main_control = PlayerController(sf::Keyboard::A, sf::Keyboard::D, sf::Keyboard::W, sf::Keyboard::S);
@@ -34,8 +35,8 @@ void Engine::Loop()
     frames++;
     if(fps_counter.asSeconds() >= 1.0f)
     {
-        std::cout<<"Updates: "<<std::to_string(updates)<<std::endl;
-        std::cout<<"FPS: "<<std::to_string(frames/fps_counter.asSeconds())<<std::endl;
+        //std::cout<<"Updates: "<<std::to_string(updates)<<std::endl;
+        //std::cout<<"FPS: "<<std::to_string(frames/fps_counter.asSeconds())<<std::endl;
         fps_counter = sf::seconds(0);
         frames = 0;
         updates = 0;
@@ -58,10 +59,14 @@ void Engine::Render()
 	if (window.isOpen())
 	{
 		window.clear();
+
+		test_map.Render(window);
 		for (GameObject* it : objects)
         {
             it->Render(window);
         }
+
+
         window.display();
 	}
 }
@@ -87,3 +92,9 @@ void Engine::InitWindow()
 {
     window.create(sf::VideoMode(settings.GetWindowSize().x, settings.GetWindowSize().y), "Sth went terribly wrong here");
 }
+
+void Engine::InitMap()
+{
+    test_map.LoadFromFile("maps/map_1.map");
+}
+
