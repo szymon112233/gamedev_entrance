@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include "SFML/Graphics.hpp"
+#include "ResourcesManager.hpp"
 
 class Map
 {
@@ -17,6 +18,7 @@ public:
 private:
     std::vector<sf::Texture> tiles_textures;
     std::vector<sf::Sprite> tiles;
+    ResourcesManager resources;
     int width = 0;
     int height = 0;
 

@@ -62,6 +62,8 @@
 		<Unit filename="Map.hpp" />
 		<Unit filename="PlayerController.cpp" />
 		<Unit filename="PlayerController.hpp" />
+		<Unit filename="ResourcesManager.cpp" />
+		<Unit filename="ResourcesManager.hpp" />
 		<Unit filename="Settings.cpp" />
 		<Unit filename="Settings.hpp" />
 		<Unit filename="Sprite.cpp" />

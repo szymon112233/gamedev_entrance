@@ -9,6 +9,9 @@
 #include "Sprite.hpp"
 #include "PlayerController.hpp"
 #include "Map.hpp"
+#include "ResourcesManager.hpp"
+
+
 
 class Engine
 {

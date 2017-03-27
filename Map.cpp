@@ -11,6 +11,7 @@ Map::Map()
         tile_number++;
         tile_filename = "sprites/tiles/" + std::to_string(tile_number) + ".png";
     }
+    resources.LoadTilesetFromFile("test_tileset", 32);
 }
 
 void Map::Update()
@@ -42,7 +43,7 @@ void Map::LoadFromFile(std::string filename)
                 {
                     int texture_number = (int)line[i] - 48;
 
-                    tiles.push_back(sf::Sprite(tiles_textures[texture_number]));
+                    tiles.push_back(sf::Sprite(resources.GetTileTexture("test_tileset", texture_number)));
                     tiles.back().setPosition(i*32,rows * 32);
                 }
                 rows++;
