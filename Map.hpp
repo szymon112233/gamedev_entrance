@@ -16,7 +16,6 @@ public:
     void LoadFromFile(std::string filename);
 
 private:
-    std::vector<sf::Texture> tiles_textures;
     std::vector<sf::Sprite> tiles;
     ResourcesManager resources;
     int width = 0;

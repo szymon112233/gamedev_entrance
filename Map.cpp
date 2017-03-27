@@ -2,15 +2,6 @@
 
 Map::Map()
 {
-    int tile_number = 0;
-    std::string tile_filename = "sprites/tiles/" + std::to_string(tile_number) + ".png";
-    sf::Texture temp_tex;
-    while (temp_tex.loadFromFile(tile_filename))
-    {
-        tiles_textures.push_back(temp_tex);
-        tile_number++;
-        tile_filename = "sprites/tiles/" + std::to_string(tile_number) + ".png";
-    }
     resources.LoadTilesetFromFile("test_tileset", 32);
 }
 
