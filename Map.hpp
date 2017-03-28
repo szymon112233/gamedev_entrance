@@ -11,15 +11,18 @@ class Map
 {
 public:
     Map();
+    Map(std::string tileset_name, int tile_size);
     void Update();
     void Render(sf::RenderWindow& window);
     void LoadFromFile(std::string filename);
 
 private:
-    std::vector<sf::Sprite> tiles;
+    std::vector<int> tile_numbers;
     ResourcesManager resources;
     int width = 0;
     int height = 0;
+    std::string tileset_name;
+    int tile_size;
 
 };
 

@@ -41,6 +41,7 @@ private:
 	const int MS_PER_UPDATE = 16;
 	Sprite test;
 	Map test_map;
+	Map test_map2;
 };
 
 

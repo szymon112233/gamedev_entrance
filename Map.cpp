@@ -2,7 +2,15 @@
 
 Map::Map()
 {
+    tileset_name = "test_tileset";
+    tile_size = 32;
     resources.LoadTilesetFromFile("test_tileset", 32);
+}
+Map::Map(std::string tileset_name, int tile_size)
+{
+    this->tileset_name = tileset_name;
+    this->tile_size = tile_size;
+    resources.LoadTilesetFromFile(tileset_name, tile_size);
 }
 
 void Map::Update()
@@ -11,36 +19,53 @@ void Map::Update()
 }
 void Map::Render(sf::RenderWindow& window)
 {
-    for (sf::Sprite& tile : tiles)
+    sf::Sprite temp_sprite;
+    for (int i = 0; i< height; i++)
     {
-        window.draw(tile);
+        for (int j = 0; j< width; j++)
+        {
+            if (tile_numbers[i*width+j] >= 0)
+            {
+                temp_sprite.setTexture(resources.GetTileTexture(tileset_name, tile_numbers[i*width+j]));
+                temp_sprite.setPosition(j * tile_size, i * tile_size);
+                window.draw(temp_sprite);
+            }
+        }
     }
 }
-void Map::LoadFromFile(std::string filename)
+void Map::LoadFromFile(std::string name)
 {
     std::fstream file;
+    std::string filename = "maps/" + name +".csv";
 
     file.open(filename, std::ios::in);
     if(file.is_open())
     {
         std::string line;
         int rows = 0;
+
         while(getline(file, line))
         {
-            std::cout<<line<<std::endl;
-            if(line[0] != '#')
+            rows++;
+            int collumns = 0;
+
+            int prev_pos = 0;
+            int curr_pos = 0;
+            do
             {
-                for(int i = 0; i < line.size(); i++)
-                {
-                    int texture_number = (int)line[i] - 48;
-
-                    tiles.push_back(sf::Sprite(resources.GetTileTexture("test_tileset", texture_number)));
-                    tiles.back().setPosition(i*32,rows * 32);
-                }
-                rows++;
+                collumns++;
+                curr_pos = line.find(",", prev_pos);
+                int number = std::stoi(line.substr(prev_pos, curr_pos - prev_pos));
+                tile_numbers.push_back(number);
+                prev_pos = ++curr_pos;
             }
-        }
-    }
+            while(line.find(",", prev_pos) != std::string::npos);
 
+            if (width < collumns)
+                width = collumns;
+
+        }
+        height = rows;
+    }
     file.close();
 }

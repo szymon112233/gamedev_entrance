@@ -61,6 +61,7 @@ void Engine::Render()
 		window.clear();
 
 		test_map.Render(window);
+		test_map2.Render(window);
 		for (GameObject* it : objects)
         {
             it->Render(window);
@@ -95,6 +96,7 @@ void Engine::InitWindow()
 
 void Engine::InitMap()
 {
-    test_map.LoadFromFile("maps/map_1.map");
+    test_map.LoadFromFile("river_l1");
+    test_map2.LoadFromFile("river_l2");
 }
 
