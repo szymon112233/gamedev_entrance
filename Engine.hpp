@@ -9,9 +9,6 @@
 #include "Sprite.hpp"
 #include "PlayerController.hpp"
 #include "Map.hpp"
-#include "ResourcesManager.hpp"
-
-
 
 class Engine
 {
@@ -30,6 +27,7 @@ public:
 	bool to_exit = false;
 	std::vector<GameObject*> objects;
 	PlayerController main_control;
+
 
 private:
     void InitWindow();

@@ -7,6 +7,8 @@
 #include "SFML/Graphics.hpp"
 #include "ResourcesManager.hpp"
 
+extern ResourcesManager resources;
+
 class Map
 {
 public:
@@ -17,8 +19,8 @@ public:
     void LoadFromFile(std::string filename);
 
 private:
+
     std::vector<int> tile_numbers;
-    ResourcesManager resources;
     int width = 0;
     int height = 0;
     std::string tileset_name;

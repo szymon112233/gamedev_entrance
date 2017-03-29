@@ -5,6 +5,7 @@ Map::Map()
     tileset_name = "test_tileset";
     tile_size = 32;
     resources.LoadTilesetFromFile("test_tileset", 32);
+
 }
 Map::Map(std::string tileset_name, int tile_size)
 {

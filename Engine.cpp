@@ -1,5 +1,4 @@
 #include "Engine.hpp"
-#include "Sprite.hpp"
 
 Engine::Engine()
 {

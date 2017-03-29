@@ -68,6 +68,7 @@
 		<Unit filename="Settings.hpp" />
 		<Unit filename="Sprite.cpp" />
 		<Unit filename="Sprite.hpp" />
+		<Unit filename="Systems.cpp" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
