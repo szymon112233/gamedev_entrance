@@ -34,6 +34,7 @@ void Map::Render(sf::RenderWindow& window)
         }
     }
 }
+
 void Map::LoadFromFile(std::string name)
 {
     std::fstream file;

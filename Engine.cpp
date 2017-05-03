@@ -3,14 +3,9 @@
 Engine::Engine()
 {
 	InitWindow();
-	InitMap();
 	previous = game_time.getElapsedTime();
+	state_stack.push(new GameplayState(*this));
 
-	main_control = PlayerController(sf::Keyboard::A, sf::Keyboard::D, sf::Keyboard::W, sf::Keyboard::S);
-
-	test = Sprite(&main_control);
-	test.SetSprite("sprites/stanie.png");
-	objects.push_back(&test);
 }
 
 void Engine::Loop()
@@ -46,27 +41,20 @@ void Engine::Loop()
 
 void Engine::Update()
 {
+    if (!state_stack.empty())
+        state_stack.top()->Update();
     updates++;
-    for (GameObject* it : objects)
-    {
-        it->Update();
-    }
+
 }
 
 void Engine::Render()
 {
+
 	if (window.isOpen())
 	{
 		window.clear();
-
-		test_map.Render(window);
-		test_map2.Render(window);
-		for (GameObject* it : objects)
-        {
-            it->Render(window);
-        }
-
-
+		if (!state_stack.empty())
+            state_stack.top()->Render(window);
         window.display();
 	}
 }
@@ -76,15 +64,13 @@ void Engine::HandleEvents()
 	sf::Event event;
 	while (window.pollEvent(event))
 	{
+	    if (!state_stack.empty())
+            state_stack.top()->HandleEvents(event);
 		if (event.type == sf::Event::Closed)
 		{
 			window.close();
 			to_exit = true;
 		}
-        main_control.HandleEvent(event);
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-            to_exit = true;
 	}
 }
 
@@ -93,9 +79,5 @@ void Engine::InitWindow()
     window.create(sf::VideoMode(settings.GetWindowSize().x, settings.GetWindowSize().y), "Sth went terribly wrong here");
 }
 
-void Engine::InitMap()
-{
-    test_map.LoadFromFile("river_l1");
-    test_map2.LoadFromFile("river_l2");
-}
+
 
