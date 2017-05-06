@@ -40,7 +40,6 @@ void GameplayState::HandleEvents(sf::Event& event)
 void GameplayState::InitMaps()
 {
     test_map.LoadFromFile("river_l1");
-    test_map2.LoadFromFile("river_l2");
 }
 
 void GameplayState::Exit()

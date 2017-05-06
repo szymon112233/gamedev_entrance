@@ -19,10 +19,7 @@ public:
     void LoadFromFile(std::string filename);
 
 private:
-
-    std::vector<int> tile_numbers;
-    int width = 0;
-    int height = 0;
+    std::vector<sf::Texture> layers_textures;
     std::string tileset_name;
     int tile_size;
 
